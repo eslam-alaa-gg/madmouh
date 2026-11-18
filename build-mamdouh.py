@@ -3,13 +3,13 @@ from urllib.request import urlopen
 from pathlib import Path
 import base64
 
-logo_source = Path("assets/wisal-logo.webp.b64")
+logo_source = Path("assets/wisal-logo.jpg.b64")
 if logo_source.exists():
     Path("img").mkdir(parents=True, exist_ok=True)
     logo_bytes = base64.b64decode(logo_source.read_text().strip())
     if not logo_bytes:
         raise RuntimeError("Wisal logo file is empty")
-    Path("img/wisal-logo.webp").write_bytes(logo_bytes)
+    Path("img/wisal-logo.jpg").write_bytes(logo_bytes)
 
 SOURCE_URL = "https://sadakah-58j1.vercel.app/"
 try:
@@ -75,7 +75,7 @@ toolbar = soup.new_tag("div", id="mamdouh-toolbar")
 toolbar["class"] = ["mamdouh-toolbar"]
 brand = soup.new_tag("a", href="#home", id="mamdouh-brand")
 brand["aria-label"] = "وصال"
-brand_img = soup.new_tag("img", src="img/wisal-logo.webp", alt="وصال", width="104", height="48", loading="eager")
+brand_img = soup.new_tag("img", src="img/wisal-logo.jpg", alt="وصال", width="104", height="48", loading="eager")
 brand.append(brand_img)
 theme_btn = soup.new_tag("button", id="theme-toggle", type="button")
 theme_btn["aria-label"] = "التبديل بين الوضع الليلي والنهاري"
