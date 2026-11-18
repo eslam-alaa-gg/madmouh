@@ -221,6 +221,9 @@ extra = [
 for old, new in extra:
     final_html = final_html.replace(old, new)
 
+# Use the full memorial name consistently in every visible page location and metadata.
+final_html = final_html.replace("ممدوح", "ممدوح عبد الهادي الاسمر")
+
 for bad in ["محمد أحمد الجلاد", "صلاح محمد الجلاد", "لهما", "المرحومين", "قبريهما", "انشر تؤجر", "انشر شيئًا للمتوفى", "mp-dialog", "MP_CONFIG", "supabase", "al_jallad", "إنشاء صدقه"]:
     if bad in final_html:
         raise RuntimeError("Unremoved reference content: " + bad)
