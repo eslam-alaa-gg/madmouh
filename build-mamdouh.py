@@ -442,6 +442,34 @@ body{background:var(--bg-gradient)!important;color:var(--text-main)!important;tr
 [data-theme="dark"] #tasbeeh .center .btn.dark,
 [data-theme="dark"] #duas .center .btn.dark{background:#B99B6C!important;color:#1D1913!important}
 
+
+/* Darken every individual dua tile, not only the outer section */
+html[data-theme="dark"] #dua,
+html[data-theme="dark"] #praised,
+html[data-theme="dark"] #hadith,
+html[data-theme="dark"] #dua-categories-wrap{
+  background:transparent!important;color:#F4EBDD!important
+}
+html[data-theme="dark"] #dua :is(.sec-card,.card,.dua-card,.dua-item,[class*="dua-card"],[class*="dua-item"],[class*="prayer-card"],[class*="category-card"]),
+html[data-theme="dark"] #praised :is(.sec-card,.card,.dua-card,.dua-item,[class*="dua-card"],[class*="dua-item"]),
+html[data-theme="dark"] #hadith :is(.sec-card,.card,.dua-card,.dua-item,[class*="dua-card"],[class*="dua-item"]){
+  background:#211E19!important;
+  background-color:#211E19!important;
+  background-image:linear-gradient(145deg,#29231B 0%,#1D1A16 100%)!important;
+  color:#F4EBDD!important;border-color:#66553E!important;
+  box-shadow:0 10px 28px rgba(0,0,0,.42)!important
+}
+html[data-theme="dark"] #dua :is(.sec-card,.card,.dua-card,.dua-item,[class*="dua-card"],[class*="dua-item"],[class*="prayer-card"],[class*="category-card"]) :is(p,span,small,li,strong,b,h1,h2,h3,h4),
+html[data-theme="dark"] #praised :is(.sec-card,.card,.dua-card,.dua-item,[class*="dua-card"],[class*="dua-item"]) :is(p,span,small,li,strong,b,h1,h2,h3,h4),
+html[data-theme="dark"] #hadith :is(.sec-card,.card,.dua-card,.dua-item,[class*="dua-card"],[class*="dua-item"]) :is(p,span,small,li,strong,b,h1,h2,h3,h4){
+  color:#F3EBDD!important
+}
+html[data-theme="dark"] #dua :is(.dua-panel-toggle,[class*="toggle"]),
+html[data-theme="dark"] #praised :is(.dua-panel-toggle,[class*="toggle"]),
+html[data-theme="dark"] #hadith :is(.dua-panel-toggle,[class*="toggle"]){
+  background:#302920!important;color:#F6EBD8!important;border-color:#66553E!important
+}
+
 @media(max-width:520px){.mamdouh-toolbar{margin-top:8px}.mamdouh-visitor-counter{margin-bottom:8px}}
 """
 theme_style = soup.new_tag("style", id="mamdouh-theme-panels")
