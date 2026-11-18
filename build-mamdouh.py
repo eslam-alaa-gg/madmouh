@@ -1,6 +1,11 @@
 from bs4 import BeautifulSoup
 from urllib.request import urlopen
 from pathlib import Path
+import base64
+
+logo_source = Path("assets/wisal-logo.webp.b64")
+if logo_source.exists():
+    Path("img/wisal-logo.webp").write_bytes(base64.b64decode(logo_source.read_text().strip()))
 
 SOURCE_URL = "https://sadakah-58j1.vercel.app/"
 try:
@@ -61,6 +66,70 @@ subtitle.string = "اللهم اغفر له وارحمه واجعل قبره ر�
 inner.extend([photo, name, subtitle])
 hero.append(inner)
 main.insert(0, hero)
+
+toolbar = soup.new_tag("div", id="mamdouh-toolbar")
+toolbar["class"] = ["mamdouh-toolbar"]
+brand = soup.new_tag("a", href="#home", id="mamdouh-brand", aria_label="وصال")
+brand_img = soup.new_tag("img", src="img/wisal-logo.webp", alt="وصال", width="104", height="48", loading="eager")
+brand.append(brand_img)
+theme_btn = soup.new_tag("button", id="theme-toggle", type="button", aria_label="التبديل بين الوضع الليلي والنهاري", aria_pressed="false")
+theme_btn["class"] = ["mamdouh-theme-toggle"]
+sun_svg = BeautifulSoup('<svg id="sun-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2M12 20v2M4.93 4.93l1.42 1.42M17.65 17.65l1.42 1.42M2 12h2M20 12h2M4.93 19.07l1.42-1.42M17.65 6.35l1.42-1.42"></path></svg>', "html.parser").svg
+moon_svg = BeautifulSoup('<svg id="moon-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.2 15.1A8.5 8.5 0 0 1 8.9 3.8 8.7 8.7 0 1 0 20.2 15.1Z"></path></svg>', "html.parser").svg
+moon_svg["hidden"] = True
+theme_btn.extend([sun_svg, moon_svg])
+theme_label = soup.new_tag("span", id="theme-label")
+theme_label.string = "ليلي"
+theme_btn.append(theme_label)
+toolbar.extend([brand, theme_btn])
+main.insert_before(toolbar)
+
+visitor = soup.new_tag("div", id="mamdouh-visitor-counter")
+visitor["class"] = ["mamdouh-visitor-counter"]
+visitor["role"] = "status"
+visitor["aria-live"] = "polite"
+visitor_label = soup.new_tag("span")
+visitor_label.string = "عدد الزوار"
+visitor_num = soup.new_tag("strong", id="mamdouh-visitor-count")
+visitor_num.string = "—"
+visitor.extend([visitor_label, visitor_num])
+toolbar.insert_after(visitor)
+
+dua_section = soup.find("section", id="dua")
+praised_section = soup.find("section", id="praised")
+hadith_section = soup.find("section", id="hadith")
+if dua_section:
+    category_wrap = soup.new_tag("div", id="dua-categories-wrap")
+    category_wrap["class"] = ["dua-categories-wrap"]
+    category_toggle = soup.new_tag("button", id="dua-categories-toggle", type="button")
+    category_toggle["class"] = ["dua-panel-toggle"]
+    category_toggle["aria-controls"] = "dua-categories-wrap"
+    category_toggle["aria-expanded"] = "true"
+    category_toggle.string = "إخفاء الأدعية"
+    dua_section.append(category_toggle)
+    for ident in ["ct", "duas"]:
+        node = dua_section.find(id=ident)
+        if node:
+            category_wrap.append(node.extract())
+    dua_section.append(category_wrap)
+    for sec, button_id, label, panel_id in [
+        (praised_section, "toggle-praised", "الأدعية المأثورة", "praised"),
+        (hadith_section, "toggle-hadith", "الأحاديث المأثورة", "hadith"),
+    ]:
+        if sec:
+            sec["hidden"] = True
+            sec["class"] = list(dict.fromkeys((sec.get("class") or []) + ["dua-nested-section"]))
+            toggle = soup.new_tag("button", id=button_id, type="button")
+            toggle["class"] = ["dua-panel-toggle"]
+            toggle["aria-controls"] = panel_id
+            toggle["aria-expanded"] = "false"
+            toggle.string = "إظهار " + label
+            dua_section.append(toggle)
+            dua_section.append(sec)
+    if hadith_section:
+        heading = hadith_section.find(id="had-h")
+        if heading:
+            heading.string = "الأحاديث المأثورة"
 
 for ident in ["memories", "more", "mlb", "mp-dialog", "mp-admin", "mp-lb", "tasbeeh-total-card"]:
     node = soup.find(id=ident)
