@@ -6,6 +6,7 @@ import base64
 logo_source = Path("assets/wisal-logo.webp.b64")
 if logo_source.exists():
     Path("img/wisal-logo.webp").write_bytes(base64.b64decode(logo_source.read_text().strip()))
+    logo_source.unlink()
 
 SOURCE_URL = "https://sadakah-58j1.vercel.app/"
 try:
@@ -344,6 +345,19 @@ for old, new in extra:
 
 # Use the full memorial name consistently in every visible page location and metadata.
 final_html = final_html.replace("ممدوح", "ممدوح عبد الهادي الاسمر")
+for old, new in [
+    ("وارحمهما", "وارحمه"), ("ارحمهما", "ارحمه"), ("وعافهما", "وعافه"),
+    ("عنهما", "عنه"), ("نُزلهما", "نُزله"), ("مُدخلهما", "مُدخله"),
+    ("درجتهما", "درجته"), ("قبريهما", "قبره"), ("فيهما", "فيه"),
+    ("وثبتهما", "وثبته"), ("درجاتهما", "درجاته"), ("أبدلهما", "أبدله"),
+    ("دارهما", "داره"), ("أهلهما", "أهله"), ("وأدخلهما", "وأدخله"),
+    ("وأعذهما", "وأعذه"), ("وحشتهما", "وحشته"), ("وقرارهما", "وقراره"),
+    ("درجتيهما", "درجته"), ("واجمعهما", "واجمعه"), ("أسكنهما", "أسكنه"),
+    ("وارزقهما", "وارزقه"), ("ذكراهما", "ذكراه"), ("وثبّتهما", "وثبّته"),
+    ("سيئاتهما", "سيئاته"), ("اجعلهما", "اجعله"), ("ومتّعهما", "ومتّعه"),
+    ("تصلهما", "تصله"), ("لهما", "له"), ("عليهما", "عليه")
+]:
+    final_html = final_html.replace(old, new)
 
 for bad in ["محمد أحمد الجلاد", "صلاح محمد الجلاد", "لهما", "المرحومين", "قبريهما", "انشر تؤجر", "انشر شيئًا للمتوفى", "mp-dialog", "MP_CONFIG", "supabase", "al_jallad", "إنشاء صدقه"]:
     if bad in final_html:
