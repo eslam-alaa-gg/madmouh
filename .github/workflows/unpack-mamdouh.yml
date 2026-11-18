@@ -1,0 +1,28 @@
+name: Unpack Mamdouh website
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'mamdouh-site-reviewed.zip'
+      - '.github/workflows/unpack-mamdouh.yml'
+permissions:
+  contents: write
+jobs:
+  unpack:
+    if: "!contains(github.event.head_commit.message, '[unpacked]')"
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Extract complete website into repository root
+        run: |
+          unzip -q mamdouh-site-reviewed.zip -d /tmp/mamdouh-archive
+          test -f /tmp/mamdouh-archive/mamdouh/index.html
+          cp -a /tmp/mamdouh-archive/mamdouh/. .
+          rm mamdouh-site-reviewed.zip
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git commit -m "Deploy complete Mamdouh memorial website [unpacked]"
+          git push
