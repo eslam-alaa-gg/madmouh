@@ -91,6 +91,11 @@ for sc in list(soup.find_all("script")):
     elif "/api/tasbeeh" in js:
         sc.decompose()
 
+# Remove the lifetime tasbeeh total card, including its decorative icon.
+total_card = soup.find(id="tasbeeh-total-card")
+if total_card:
+    total_card.decompose()
+
 for wrap in soup.select(".reciter-img-wrap"):
     wrap.clear()
     wrap["aria-hidden"] = "true"
@@ -192,6 +197,8 @@ button,input,textarea,select{font-family:Lemonadaa,system-ui,sans-serif!importan
 .mamdouh-footer p{margin:0 0 6px;color:var(--text-main)}.mamdouh-footer small{font-size:.82rem}
 .mamdouh-share{display:flex;justify-content:center;gap:9px;flex-wrap:wrap;margin-top:14px}
 .mamdouh-share a,.mamdouh-share button{display:inline-flex;align-items:center;justify-content:center;min-height:42px;padding:9px 14px;border:1px solid var(--border-color);border-radius:999px;background:#fff;color:var(--text-main);text-decoration:none;font-size:.82rem;cursor:pointer}
+#pray-next{background:#332F2A!important;color:#F8F6F3!important;border:1px solid #CFCAC2!important;border-radius:999px!important;box-shadow:0 4px 12px rgba(51,47,42,.12)!important;transition:background .2s ease,transform .2s ease}
+#pray-next:hover{background:#514A42!important;transform:translateY(-1px)}
 @media(max-width:520px){.mamdouh-intro{margin-top:12px;padding:22px 14px 18px;border-radius:22px}.mamdouh-photo{width:min(62vw,205px);height:240px}.mamdouh-footer{margin-bottom:100px}}
 """
 style = soup.new_tag("style", id="mamdouh-theme-overrides")
