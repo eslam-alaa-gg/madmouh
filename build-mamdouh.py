@@ -311,6 +311,28 @@ body{background:var(--bg-gradient)!important;color:var(--text-main)!important;tr
 [data-theme=dark] .bn a{color:#B2ABA0!important}
 [data-theme=dark] .bn a[aria-current=page]{background:#E6E3DD!important;color:#332F2A!important}
 [data-theme=dark] .v2-pray-btn{background:linear-gradient(135deg,#403A32 0%,#332F2A 100%)!important;color:#F1EEE9!important;border-color:#857E71!important}
+
+[data-theme=dark] .sec-card{
+  background:#211E19!important;color:#F3EBDD!important;border-color:#51483B!important;
+  box-shadow:0 10px 28px rgba(0,0,0,.3)!important
+}
+[data-theme=dark] .sec-card :is(h1,h2,h3,h4,h5,h6,.sec-title,.title,.heading,strong,b,label){
+  color:#F6EBD8!important
+}
+[data-theme=dark] .sec-card :is(p,span,small,li,div,a,button,em){color:#E9DDC9}
+[data-theme=dark] .sec-card :is(.muted,.subtitle,.description,.caption,.hint,.secondary){color:#C2B49D!important}
+[data-theme=dark] .sec-card :is([class*="quran"],[class*="surah"],[class*="audio"],[class*="player"],[class*="reciter"],[class*="dua"],[class*="verse"],[class*="ayah"],[class*="track"],[class*="control"]){
+  background-color:#302A22!important;color:#F3EBDD!important;border-color:#655744!important
+}
+[data-theme=dark] .sec-card :is(button,a,[role="button"]){
+  background-color:#3A3228!important;color:#F6EBD8!important;border-color:#75634B!important
+}
+[data-theme=dark] .sec-card :is(svg,i){color:#E8D7B8!important;stroke:currentColor}
+[data-theme=dark] .sec-card :is(input,select,textarea){background:#302A22!important;color:#F6EBD8!important;border-color:#75634B!important}
+[data-theme=dark] .sec-card :is(input,select,textarea)::placeholder{color:#BDAE96!important}
+[data-theme=dark] .sec-card :is(.progress,.progress-bar,.audio-progress,[class*="progress"]){background:#51483B!important}
+[data-theme=dark] .sec-card :is(.progress,[class*="progress"]) :is(i,span){background:#C7A979!important}
+
 @media(max-width:520px){.mamdouh-toolbar{margin-top:8px}.mamdouh-visitor-counter{margin-bottom:8px}}
 """
 theme_style = soup.new_tag("style", id="mamdouh-theme-panels")
