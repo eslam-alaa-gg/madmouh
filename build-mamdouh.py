@@ -5,8 +5,11 @@ import base64
 
 logo_source = Path("assets/wisal-logo.webp.b64")
 if logo_source.exists():
-    Path("img/wisal-logo.webp").write_bytes(base64.b64decode(logo_source.read_text().strip()))
-    logo_source.unlink()
+    Path("img").mkdir(parents=True, exist_ok=True)
+    logo_bytes = base64.b64decode(logo_source.read_text().strip())
+    if not logo_bytes:
+        raise RuntimeError("Wisal logo file is empty")
+    Path("img/wisal-logo.webp").write_bytes(logo_bytes)
 
 SOURCE_URL = "https://sadakah-58j1.vercel.app/"
 try:
@@ -169,13 +172,9 @@ total_card = soup.find(id="tasbeeh-total-card")
 if total_card:
     total_card.decompose()
 
+# Keep the original reciter artwork in the Quran player instead of replacing it.
 for wrap in soup.select(".reciter-img-wrap"):
-    wrap.clear()
-    wrap["aria-hidden"] = "true"
-    mark = soup.new_tag("div")
-    mark["class"] = ["quran-mark"]
-    mark.string = "القرآن الكريم"
-    wrap.append(mark)
+    wrap["aria-hidden"] = "false"
 
 for a in list(soup.select('nav a[href="#more"]')):
     a.decompose()
@@ -209,7 +208,6 @@ replacements = [
     ("محمد أحمد الجلاد وصلاح محمد الجلاد", "ممدوح"),
     ("محمد أحمد الجلاد", "ممدوح"),
     ("صلاح محمد الجلاد", "ممدوح"),
-    ("عمر بن ضياء الدين", "قارئ القرآن الكريم"),
     ("لا تنسوهما من دعائكم", "لا تنسوه من دعائكم"),
     ("لا تنسوهما", "لا تنسوه"),
     ("ادعُ لهما الآن", "ادعُ له الآن"),
@@ -341,7 +339,6 @@ extra = [
     ("صدقة جارية على روح المرحومين محمد أحمد الجلاد وصلاح محمد الجلاد، نسألكم الدعاء لهما بالرحمة والمغفرة:", "صدقة جارية على روح ممدوح، نسألكم الدعاء له بالرحمة والمغفرة:"),
     ("انشر شيئًا للمتوفى", "شارك رابط الموقع"),
     ("assets/audio/quran/surah/surah-ya-sin.mp3", "https://sadakah-58j1.vercel.app/surah-ya-sin.mp3"),
-    ("القارئ عمر بن ضياء الدين - سورة يس", "تلاوة سورة يس"),
 ]
 for old, new in extra:
     final_html = final_html.replace(old, new)
