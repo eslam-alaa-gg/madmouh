@@ -388,6 +388,60 @@ body{background:var(--bg-gradient)!important;color:var(--text-main)!important;tr
 [data-theme=dark] .grp{color:#CBBDA6!important}
 [data-theme=dark] .custom input::placeholder{color:#B8A98F!important}
 
+
+/* Explicit dark styling for the actual dua and tasbeeh view IDs */
+[data-theme="dark"] #duas,
+[data-theme="dark"] #tasbeeh{color:#F4EBDD!important}
+[data-theme="dark"] #duas > .glass,
+[data-theme="dark"] #tasbeeh > .glass,
+[data-theme="dark"] #duas .glass.dua,
+[data-theme="dark"] #tasbeeh .glass.tas,
+[data-theme="dark"] #duas .glass.err{
+  background:#201C17!important;
+  background-image:linear-gradient(145deg,#29231B 0%,#1D1A16 100%)!important;
+  color:#F4EBDD!important;
+  border:1px solid #66553E!important;
+  box-shadow:0 14px 36px rgba(0,0,0,.48)!important;
+  -webkit-backdrop-filter:none!important;backdrop-filter:none!important
+}
+[data-theme="dark"] #duas .dua-text,
+[data-theme="dark"] #tasbeeh .dhikr,
+[data-theme="dark"] #tasbeeh .count{color:#FFF2DA!important}
+[data-theme="dark"] #duas #d-src,
+[data-theme="dark"] #duas #d-idx,
+[data-theme="dark"] #tasbeeh #t-combo,
+[data-theme="dark"] #tasbeeh #t-of,
+[data-theme="dark"] #tasbeeh #t-note,
+[data-theme="dark"] #duas .muted,
+[data-theme="dark"] #tasbeeh .muted{color:#D1C0A5!important}
+[data-theme="dark"] #duas .dua-foot{border-top-color:#514432!important}
+[data-theme="dark"] #duas .icon,
+[data-theme="dark"] #duas .btn:not(.dark),
+[data-theme="dark"] #tasbeeh .btn:not(.dark),
+[data-theme="dark"] #tasbeeh .chip,
+[data-theme="dark"] #tasbeeh .custom input{
+  background:#332B21!important;color:#FFF0D6!important;
+  border:1px solid #786344!important
+}
+[data-theme="dark"] #duas .btn.dark,
+[data-theme="dark"] #tasbeeh .btn.dark,
+[data-theme="dark"] #tasbeeh .chip[aria-pressed="true"]{
+  background:#B99B6C!important;border-color:#B99B6C!important;color:#1D1913!important
+}
+[data-theme="dark"] #tasbeeh .tap{
+  background:radial-gradient(circle at 35% 28%,#806847 0%,#493722 72%)!important;
+  color:#FFF1D8!important;border:1px solid #A88A5E!important;
+  box-shadow:inset 0 2px 0 rgba(255,255,255,.12),0 22px 42px rgba(0,0,0,.55)!important
+}
+[data-theme="dark"] #tasbeeh .bar{background:#514637!important}
+[data-theme="dark"] #tasbeeh .bar i{background:#C7A979!important}
+[data-theme="dark"] #tasbeeh .chip{color:#F4EBDD!important}
+[data-theme="dark"] #tasbeeh .custom input::placeholder{color:#C7B698!important}
+[data-theme="dark"] #tasbeeh .center .btn,
+[data-theme="dark"] #duas .center .btn{background:#332B21!important;color:#FFF0D6!important;border-color:#786344!important}
+[data-theme="dark"] #tasbeeh .center .btn.dark,
+[data-theme="dark"] #duas .center .btn.dark{background:#B99B6C!important;color:#1D1913!important}
+
 @media(max-width:520px){.mamdouh-toolbar{margin-top:8px}.mamdouh-visitor-counter{margin-bottom:8px}}
 """
 theme_style = soup.new_tag("style", id="mamdouh-theme-panels")
