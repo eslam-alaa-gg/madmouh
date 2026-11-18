@@ -333,6 +333,61 @@ body{background:var(--bg-gradient)!important;color:var(--text-main)!important;tr
 [data-theme=dark] .sec-card :is(.progress,.progress-bar,.audio-progress,[class*="progress"]){background:#51483B!important}
 [data-theme=dark] .sec-card :is(.progress,[class*="progress"]) :is(i,span){background:#C7A979!important}
 
+
+/* Dark palette for the standalone dua and tasbeeh views */
+[data-theme=dark] body,
+[data-theme=dark] main{color:#F3EBDD!important}
+[data-theme=dark] .glass,
+[data-theme=dark] .glass.dua,
+[data-theme=dark] .glass.tas,
+[data-theme=dark] .glass.err{
+  background:linear-gradient(145deg,#29241D 0%,#211D18 100%)!important;
+  color:#F3EBDD!important;border:1px solid #514637!important;
+  box-shadow:0 18px 42px rgba(0,0,0,.34)!important
+}
+[data-theme=dark] .dua-text,
+[data-theme=dark] .dhikr,
+[data-theme=dark] .count,
+[data-theme=dark] .glass :is(h1,h2,h3,b,strong){color:#F6EBD8!important}
+[data-theme=dark] .glass .muted,
+[data-theme=dark] .glass .note,
+[data-theme=dark] .glass .dua-foot,
+[data-theme=dark] .glass p:not(.dua-text):not(.dhikr):not(.note){color:#CBBDA6!important}
+[data-theme=dark] .dua-foot{border-color:#514637!important}
+[data-theme=dark] .glass .icon,
+[data-theme=dark] .glass .btn:not(.dark),
+[data-theme=dark] .chip,
+[data-theme=dark] .custom input{
+  background:#383025!important;color:#F3EBDD!important;
+  border:1px solid #6A5943!important
+}
+[data-theme=dark] .btn.dark,
+[data-theme=dark] .chip[aria-pressed=true],
+[data-theme=dark] .nav a[aria-current=page]{
+  background:#C7AD82!important;border-color:#C7AD82!important;color:#211D18!important
+}
+[data-theme=dark] .tap{
+  background:radial-gradient(circle at 35% 28%,#786447,#3B3022 72%)!important;
+  color:#F6EBD8!important;box-shadow:inset 0 2px 0 rgba(255,255,255,.12),0 22px 42px rgba(0,0,0,.42)!important
+}
+[data-theme=dark] .bar{background:#494033!important}
+[data-theme=dark] .bar i{background:#C7AD82!important}
+[data-theme=dark] .nav{
+  background:rgba(34,29,23,.94)!important;border-color:#514637!important
+}
+[data-theme=dark] .nav a{color:#CBBDA6!important}
+[data-theme=dark] dialog{
+  background:#211D18!important;color:#F3EBDD!important;border:1px solid #514637!important
+}
+[data-theme=dark] .opt{
+  background:#302920!important;color:#F3EBDD!important;border-color:#514637!important
+}
+[data-theme=dark] .opt small{color:#CBBDA6!important}
+[data-theme=dark] .opt[aria-current=true]{background:#C7AD82!important;color:#211D18!important;border-color:#C7AD82!important}
+[data-theme=dark] .opt[aria-current=true] small{color:#33291D!important}
+[data-theme=dark] .grp{color:#CBBDA6!important}
+[data-theme=dark] .custom input::placeholder{color:#B8A98F!important}
+
 @media(max-width:520px){.mamdouh-toolbar{margin-top:8px}.mamdouh-visitor-counter{margin-bottom:8px}}
 """
 theme_style = soup.new_tag("style", id="mamdouh-theme-panels")
