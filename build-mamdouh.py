@@ -70,10 +70,13 @@ main.insert(0, hero)
 
 toolbar = soup.new_tag("div", id="mamdouh-toolbar")
 toolbar["class"] = ["mamdouh-toolbar"]
-brand = soup.new_tag("a", href="#home", id="mamdouh-brand", aria_label="وصال")
+brand = soup.new_tag("a", href="#home", id="mamdouh-brand")
+brand["aria-label"] = "وصال"
 brand_img = soup.new_tag("img", src="img/wisal-logo.webp", alt="وصال", width="104", height="48", loading="eager")
 brand.append(brand_img)
-theme_btn = soup.new_tag("button", id="theme-toggle", type="button", aria_label="التبديل بين الوضع الليلي والنهاري", aria_pressed="false")
+theme_btn = soup.new_tag("button", id="theme-toggle", type="button")
+theme_btn["aria-label"] = "التبديل بين الوضع الليلي والنهاري"
+theme_btn["aria-pressed"] = "false"
 theme_btn["class"] = ["mamdouh-theme-toggle"]
 sun_svg = BeautifulSoup('<svg id="sun-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2M12 20v2M4.93 4.93l1.42 1.42M17.65 17.65l1.42 1.42M2 12h2M20 12h2M4.93 19.07l1.42-1.42M17.65 6.35l1.42-1.42"></path></svg>', "html.parser").svg
 moon_svg = BeautifulSoup('<svg id="moon-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.2 15.1A8.5 8.5 0 0 1 8.9 3.8 8.7 8.7 0 1 0 20.2 15.1Z"></path></svg>', "html.parser").svg
