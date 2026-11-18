@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#f8f6f3">
+<meta name="description" content="صدقة جارية عن روح ممدوح عبد الهادي الأسمر. أدعية وأحاديث صحيحة وقراءة سورة يس.">
+<meta property="og:title" content="صدقة جارية | ممدوح عبد الهادي الأسمر">
+<meta property="og:description" content="اللهم اغفر له وارحمه واجعل مثواه الجنة.">
+<title>صدقة جارية | ممدوح عبد الهادي الأسمر</title>
+<style>
+:root{--ink:#332f2a;--brown:#585248;--muted:#857e71;--line:#e6e3dd;--paper:#f8f6f3;--white:#fff;--radius:24px}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--paper);color:var(--ink);font-family:Tahoma,Arial,sans-serif;line-height:1.9}
+a{color:inherit;text-decoration:none}.wrap{width:min(1100px,calc(100% - 36px));margin:auto}
+header{position:sticky;top:0;z-index:5;background:#f8f6f3dd;backdrop-filter:blur(16px);border-bottom:1px solid var(--line)}
+nav{display:flex;align-items:center;justify-content:space-between;min-height:72px;gap:16px}.brand{font-weight:700;letter-spacing:.3px}.links{display:flex;gap:22px;font-size:14px;color:var(--muted)}.links a:hover{color:var(--ink)}
+.hero{padding:86px 0 64px;display:grid;grid-template-columns:1.1fr .9fr;align-items:center;gap:48px;min-height:510px}
+.kicker{color:var(--muted);font-size:13px;letter-spacing:1px}.hero h1{font-size:clamp(32px,5vw,54px);line-height:1.45;margin:12px 0}.hero p{color:var(--muted);font-size:18px;max-width:570px}
+.portrait{min-height:340px;border-radius:32px;background:linear-gradient(145deg,#e6e3dd,#cfcac2);display:grid;place-items:center;overflow:hidden;position:relative}
+.portrait:after{content:"ممدوح عبد الهادي الأسمر";color:#585248;font-size:20px}
+.actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:26px}.btn{border:1px solid var(--ink);padding:11px 22px;border-radius:999px;background:var(--ink);color:white;font:inherit;cursor:pointer}.btn.alt{background:transparent;color:var(--ink)}
+section{padding:54px 0;scroll-margin-top:90px}.section-head{margin-bottom:24px}.section-head h2{font-size:28px;margin:0}.section-head p{color:var(--muted);margin:4px 0}
+.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}.card{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:24px;box-shadow:0 8px 30px #332f2a08}.card p{margin:0 0 16px}.tools{display:flex;gap:10px}.tools button{border:0;background:#f1efeb;color:var(--brown);padding:7px 14px;border-radius:999px;cursor:pointer}
+.quote{background:#332f2a;color:#fff;border-radius:28px;padding:32px}.quote p{color:#e6e3dd;font-size:20px}.verse{font-size:23px;line-height:2.3;text-align:justify}.muted{color:var(--muted)}footer{padding:36px 0;border-top:1px solid var(--line);text-align:center;color:var(--muted)}
+.reveal{opacity:0;transform:translateY(18px);transition:opacity .7s ease,transform .7s ease}.reveal.visible{opacity:1;transform:none}
+@media(max-width:720px){.links{display:none}.hero{grid-template-columns:1fr;padding:54px 0 30px;gap:24px}.portrait{min-height:220px;order:-1}.grid{grid-template-columns:1fr}.hero p{font-size:16px}section{padding:38px 0}.verse{font-size:20px}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*:before,*:after{transition:none!important;animation:none!important}}
+</style>
+</head>
+<body>
+<header><div class="wrap"><nav><a class="brand" href="#">MADMOUH</a><div class="links"><a href="#duas">الأدعية</a><a href="#hadith">أحاديث نبوية</a><a href="#yaseen">سورة يس</a><a href="#sadaqah">الصدقة الجارية</a></div></nav></div></header>
+<main class="wrap">
+<div class="hero"><div class="reveal"><span class="kicker">صدقة جارية ودعاء بالرحمة</span><h1>ممدوح عبد الهادي الأسمر</h1><p>اللهم اغفر له وارحمه، وأنر قبره، وآنس وحشته، واجعل الفردوس الأعلى داره ومستقره.</p><div class="actions"><a class="btn" href="#duas">اقرأ الأدعية</a><a class="btn alt" href="#yaseen">سورة يس</a></div></div><div class="portrait reveal" role="img" aria-label="صورة تذكارية للمرحوم"></div></div>
+<section id="duas"><div class="section-head"><h2>أدعية للمرحوم</h2><p>نسأل الله أن يتقبل الدعاء ويغمره برحمته.</p></div><div class="grid" id="dua-list"></div></section>
+<section id="hadith"><div class="section-head"><h2>من هدي النبي ﷺ</h2><p>أحاديث في الدعاء والصدقة الجارية.</p></div><div class="grid" id="hadith-list"></div></section>
+<section id="yaseen"><div class="section-head"><h2>سورة يس</h2><p>قراءة من كتاب الله الكريم.</p></div><article class="card"><div class="tools"><button id="smaller">تصغير الخط</button><button id="larger">تكبير الخط</button></div><p id="quran-status" class="muted">جارٍ تحميل سورة يس من مصدر قرآني موثوق…</p><div id="verses" class="verse"></div></article></section>
+<section id="sadaqah"><div class="quote"><h2>لا تنسوه من دعائكم</h2><p>اللهم ارحم ممدوح عبد الهادي الأسمر رحمةً واسعة، واغفر له، واجعل قبره روضةً من رياض الجنة.</p></div></section>
+</main><footer><div class="wrap">صدقة جارية عن روح ممدوح عبد الهادي الأسمر · اللهم تقبل هذا العمل واجعله خالصًا لوجهك الكريم</div></footer>
+<script>
+const duas=[
+"اللهم اغفر له وارحمه، وعافه واعفُ عنه، وأكرم نزله، ووسّع مدخله.",
+"اللهم آنس وحشته، ونوّر قبره، واجعل قبره روضةً من رياض الجنة.",
+"اللهم ارفع درجته في المهديين، واخلفه في عقبه في الغابرين، واغفر لنا وله يا رب العالمين.",
+"اللهم اجزه عن الإحسان إحسانًا، وعن الإساءة عفوًا وغفرانًا.",
+"اللهم اجعل الفردوس الأعلى داره ومستقره، واجمعه بمن يحب في جنات النعيم.",
+"اللهم اغسله بالماء والثلج والبرد، ونقّه من الخطايا كما يُنقّى الثوب الأبيض من الدنس."
+];
+const hadiths=[
+{t:"إذا مات الإنسان انقطع عنه عمله إلا من ثلاثة: إلا من صدقة جارية، أو علم ينتفع به، أو ولد صالح يدعو له.",s:"صحيح مسلم، حديث 1631"},
+{t:"استغفروا لأخيكم، وسلوا له التثبيت، فإنه الآن يُسأل.",s:"سنن أبي داود، حديث 3221"},
+{t:"اللهم اغفر له وارحمه، وعافه واعف عنه، وأكرم نزله، ووسّع مدخله.",s:"من دعاء النبي ﷺ للميت — صحيح مسلم، حديث 963"}
+];
+function card(text,source=""){const el=document.createElement("article");el.className="card reveal";const p=document.createElement("p");p.textContent=text;el.append(p);if(source){const s=document.createElement("small");s.className="muted";s.textContent=source;el.append(s)}const tools=document.createElement("div");tools.className="tools";const b=document.createElement("button");b.textContent="نسخ";b.onclick=()=>navigator.clipboard?.writeText(text);tools.append(b);el.append(tools);return el}
+duas.forEach(x=>document.querySelector("#dua-list").append(card(x)));hadiths.forEach(x=>document.querySelector("#hadith-list").append(card(x.t,x.s)));
+let size=23;document.querySelector("#larger").onclick=()=>{size=Math.min(36,size+2);document.querySelector("#verses").style.fontSize=size+"px"};document.querySelector("#smaller").onclick=()=>{size=Math.max(16,size-2);document.querySelector("#verses").style.fontSize=size+"px"};
+fetch("https://api.quran.com/api/v4/verses/by_chapter/36?fields=text_uthmani&per_page=50&page=1").then(r=>r.json()).then(async d=>{let verses=d.verses||[];let p=2;while(verses.length<83&&p<=2){const x=await fetch("https://api.quran.com/api/v4/verses/by_chapter/36?fields=text_uthmani&per_page=50&page="+p).then(r=>r.json());verses=verses.concat(x.verses||[]);p++}if(verses.length!==83)throw Error("عدد الآيات غير مكتمل");document.querySelector("#verses").textContent=verses.map(v=>v.text_uthmani+" ﴿"+v.verse_number+"﴾").join(" ");document.querySelector("#quran-status").textContent="سورة يس · 83 آية · المصدر: Quran.com API";}).catch(()=>document.querySelector("#quran-status").textContent="تعذر تحميل النص القرآني الآن. يرجى إعادة المحاولة عند توفر الاتصال.");
+const observer=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add("visible");observer.unobserve(e.target)}}),{threshold:.12});document.querySelectorAll(".reveal").forEach(e=>observer.observe(e));
+</script></body></html>
