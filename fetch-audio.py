@@ -16,7 +16,7 @@ try:
 
     for item in metadata.get("audio", []):
         item["src"] = "assets/audio/quran/surah/surah-ya-sin.mp3"
-        item["reader"] = "قارئ القرآن الكريم"
+        item["reader"] = "القارئ عمر بن ضياء الدين"
 
     audio_dir.mkdir(parents=True, exist_ok=True)
     (audio_dir / "metadata.json").write_text(
