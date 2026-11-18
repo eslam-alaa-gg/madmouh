@@ -62,7 +62,7 @@ inner.extend([photo, name, subtitle])
 hero.append(inner)
 main.insert(0, hero)
 
-for ident in ["memories", "more", "mlb", "mp-dialog", "mp-admin", "mp-lb"]:
+for ident in ["memories", "more", "mlb", "mp-dialog", "mp-admin", "mp-lb", "tasbeeh-total-card"]:
     node = soup.find(id=ident)
     if node:
         node.decompose()
@@ -197,25 +197,14 @@ button,input,textarea,select{font-family:Lemonadaa,system-ui,sans-serif!importan
 .mamdouh-footer p{margin:0 0 6px;color:var(--text-main)}.mamdouh-footer small{font-size:.82rem}
 .mamdouh-share{display:flex;justify-content:center;gap:9px;flex-wrap:wrap;margin-top:14px}
 .mamdouh-share a,.mamdouh-share button{display:inline-flex;align-items:center;justify-content:center;min-height:42px;padding:9px 14px;border:1px solid var(--border-color);border-radius:999px;background:#fff;color:var(--text-main);text-decoration:none;font-size:.82rem;cursor:pointer}
-#pray-next{background:#332F2A!important;color:#F8F6F3!important;border:1px solid #CFCAC2!important;border-radius:999px!important;box-shadow:0 4px 12px rgba(51,47,42,.12)!important;transition:background .2s ease,transform .2s ease}
-#pray-next:hover{background:#514A42!important;transform:translateY(-1px)}
+.v2-pray-btn,[data-theme=light] .v2-pray-btn{background:linear-gradient(135deg,#E6E3DD 0%,#CFCAC2 100%)!important;color:#332F2A!important;border:3px solid #B2ABA0!important;box-shadow:0 8px 22px rgba(51,47,42,.14)!important}
+.v2-pray-btn svg{stroke:currentColor!important}
+.v2-pray-btn:active{background:linear-gradient(135deg,#CFCAC2 0%,#B2ABA0 100%)!important}
 @media(max-width:520px){.mamdouh-intro{margin-top:12px;padding:22px 14px 18px;border-radius:22px}.mamdouh-photo{width:min(62vw,205px);height:240px}.mamdouh-footer{margin-bottom:100px}}
 """
 style = soup.new_tag("style", id="mamdouh-theme-overrides")
 style.string = theme_css
 soup.head.append(style)
-
-counter = soup.new_tag("script")
-counter.string = """
-(function(){
- var n=document.getElementById('tasbeeh-total-number'),t=document.getElementById('tap');
- if(!n||!t)return;var k='mamdouh_tasbeeh_total',v=0;
- try{v=Math.max(0,Number(localStorage.getItem(k)||0)||0)}catch(e){}
- function draw(){n.textContent=v.toLocaleString('en-US')}draw();
- t.addEventListener('click',function(){v++;try{localStorage.setItem(k,String(v))}catch(e){}draw()});
-})();
-"""
-soup.body.append(counter)
 
 final_html = str(soup)
 for old, new in replacements:
