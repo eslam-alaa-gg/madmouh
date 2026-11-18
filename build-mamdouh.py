@@ -275,6 +275,58 @@ style = soup.new_tag("style", id="mamdouh-theme-overrides")
 style.string = theme_css
 soup.head.append(style)
 
+theme_and_panels_css = r"""
+:root,[data-theme=light]{--bg-main:#F8F6F3;--bg-gradient:linear-gradient(180deg,#F8F6F3 0%,#F1EEE9 100%);--text-main:#332F2A;--text-muted:#857E71;--text-heading:#332F2A;--card-bg:#FFFFFF;--card-inner:#F8F6F3;--border-color:#CFCAC2;--pill-bg:#E6E3DD;--pill-active-bg:#332F2A;--pill-active-text:#F8F6F3;--box-shadow-card:0 8px 24px rgba(51,47,42,.08);color-scheme:light}
+[data-theme=dark]{--bg-main:#191714;--bg-gradient:linear-gradient(180deg,#191714 0%,#24211D 100%);--text-main:#F1EEE9;--text-muted:#B2ABA0;--text-heading:#F8F6F3;--card-bg:#29251F;--card-inner:#332F2A;--border-color:#585248;--pill-bg:#403A32;--pill-active-bg:#E6E3DD;--pill-active-text:#332F2A;--box-shadow-card:0 8px 24px rgba(0,0,0,.24);color-scheme:dark}
+html{background:var(--bg-main)!important}
+body{background:var(--bg-gradient)!important;color:var(--text-main)!important;transition:background .2s,color .2s}
+.mamdouh-toolbar{direction:rtl;width:min(100% - 32px,760px);margin:12px auto 8px;display:flex;align-items:center;justify-content:space-between;min-height:54px}
+#mamdouh-brand{display:flex;align-items:center;justify-content:center;width:78px;height:42px;overflow:hidden;border-radius:10px;background:#F8F6F3;border:1px solid var(--border-color)}
+#mamdouh-brand img{width:100%;height:100%;object-fit:contain}
+.mamdouh-theme-toggle{display:inline-flex;align-items:center;justify-content:center;gap:7px;min-width:44px;min-height:42px;padding:7px 12px;border-radius:999px;border:1px solid var(--border-color);background:var(--card-bg);color:var(--text-main);font:500 .82rem Lemonadaa,system-ui,sans-serif;cursor:pointer}
+.mamdouh-theme-toggle svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.mamdouh-theme-toggle svg[hidden]{display:none}
+.mamdouh-visitor-counter{width:max-content;max-width:calc(100% - 32px);margin:2px auto 12px;padding:8px 18px;display:flex;align-items:center;justify-content:center;gap:10px;border:1px solid var(--border-color);border-radius:999px;background:var(--glass-bg);color:var(--text-muted);box-shadow:var(--box-shadow-card);font-size:.9rem}
+.mamdouh-visitor-counter strong{color:var(--text-heading);font-family:Inter,Arial,sans-serif;font-size:1.05rem;font-variant-numeric:tabular-nums}
+.mamdouh-intro{background:var(--glass-bg)!important;border-color:var(--border-color)!important}
+.mamdouh-name{color:var(--text-heading)!important}
+.mamdouh-subtitle{color:var(--text-muted)!important}
+.sec-card{background:var(--card-bg)!important;color:var(--text-main)!important;border-color:var(--border-color)!important;box-shadow:var(--box-shadow-card)!important}
+.sec-title{color:var(--text-heading)!important}
+.sec-card p,.sec-card .muted,.sec-card small{color:var(--text-muted)}
+.mamdouh-footer{color:var(--text-muted)!important;border-color:var(--border-color)!important}
+.mamdouh-footer p{color:var(--text-main)!important}
+.mamdouh-share a,.mamdouh-share button{background:var(--card-bg)!important;color:var(--text-main)!important;border-color:var(--border-color)!important}
+.dua-panel-toggle{display:flex;width:100%;min-height:48px;align-items:center;justify-content:center;margin:12px 0;padding:10px 16px;border:1px solid var(--border-color);border-radius:16px;background:var(--card-inner);color:var(--text-main);font:500 .92rem Lemonadaa,system-ui,sans-serif;cursor:pointer}
+.dua-nested-section{margin-top:12px}
+.dua-nested-section[hidden],#dua-categories-wrap[hidden]{display:none!important}
+#dua{display:flex;flex-direction:column;gap:10px}
+#dua .dua-nested-section{width:100%;box-sizing:border-box}
+#dua .dua-nested-section .sec-title{margin-top:4px}
+[data-theme=dark] .mamdouh-intro{background:rgba(41,37,31,.9)!important}
+[data-theme=dark] .quran-mark{background:#403A32;color:#F1EEE9}
+[data-theme=dark] .bn{background:rgba(25,23,20,.9)!important;border-color:#585248!important}
+[data-theme=dark] .bn a{color:#B2ABA0!important}
+[data-theme=dark] .bn a[aria-current=page]{background:#E6E3DD!important;color:#332F2A!important}
+[data-theme=dark] .v2-pray-btn{background:linear-gradient(135deg,#403A32 0%,#332F2A 100%)!important;color:#F1EEE9!important;border-color:#857E71!important}
+@media(max-width:520px){.mamdouh-toolbar{margin-top:8px}.mamdouh-visitor-counter{margin-bottom:8px}}
+"""
+theme_style = soup.new_tag("style", id="mamdouh-theme-panels")
+theme_style.string = theme_and_panels_css
+soup.head.append(theme_style)
+
+theme_script = soup.new_tag("script", id="mamdouh-theme-script")
+theme_script.string = r"""(()=>{const root=document.documentElement,btn=document.getElementById('theme-toggle'),sun=document.getElementById('sun-icon'),moon=document.getElementById('moon-icon'),label=document.getElementById('theme-label');if(!btn)return;let saved='light';try{saved=localStorage.getItem('mamdouh_theme')||'light'}catch(e){}const apply=t=>{root.setAttribute('data-theme',t);sun.hidden=t==='dark';moon.hidden=t!=='dark';label.textContent=t==='dark'?'نهاري':'ليلي';btn.setAttribute('aria-pressed',String(t==='dark'));const meta=document.querySelector('meta[name="theme-color"]');if(meta)meta.content=t==='dark'?'#191714':'#F8F6F3'};apply(saved);btn.addEventListener('click',()=>{const t=root.getAttribute('data-theme')==='dark'?'light':'dark';apply(t);try{localStorage.setItem('mamdouh_theme',t)}catch(e){}})})();"""
+soup.body.append(theme_script)
+
+visitor_script = soup.new_tag("script", id="mamdouh-visitor-placeholder")
+visitor_script.string = r"""(()=>{const el=document.getElementById('mamdouh-visitor-count');if(el)el.textContent='—'})();"""
+soup.body.append(visitor_script)
+
+dua_script = soup.new_tag("script", id="mamdouh-dua-panels")
+dua_script.string = r"""(()=>{const bind=(id,btnId,showText,hideText)=>{const panel=document.getElementById(id),btn=document.getElementById(btnId);if(!panel||!btn)return;btn.addEventListener('click',()=>{const show=panel.hidden;panel.hidden=!show;btn.setAttribute('aria-expanded',String(show));btn.textContent=(show?hideText:showText)})};bind('dua-categories-wrap','dua-categories-toggle','إظهار الأدعية','إخفاء الأدعية');bind('praised','toggle-praised','إظهار الأدعية المأثورة','إخفاء الأدعية المأثورة');bind('hadith','toggle-hadith','إظهار الأحاديث المأثورة','إخفاء الأحاديث المأثورة')})();"""
+soup.body.append(dua_script)
+
 final_html = str(soup)
 for old, new in replacements:
     final_html = final_html.replace(old, new)
