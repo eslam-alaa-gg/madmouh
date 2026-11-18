@@ -2,6 +2,7 @@ from bs4 import BeautifulSoup
 from urllib.request import urlopen
 from pathlib import Path
 import base64
+import re
 
 logo_source = Path("assets/wisal-logo.jpg.b64")
 if logo_source.exists():
@@ -525,5 +526,9 @@ if not Path("img/photo.jpg").exists():
     raise RuntimeError("Missing Mamdouh portrait")
 if not Path("fonts/Lemonadaa_Regular.ttf").exists():
     raise RuntimeError("Missing Mamdouh font")
+# Replace the requested legacy color globally in the complete generated page.
+final_html = re.sub(r"#cecdcc", "#6a5f53", final_html, flags=re.IGNORECASE)
+if re.search(r"#cecdcc", final_html, flags=re.IGNORECASE):
+    raise RuntimeError("Legacy color #cecdcc remains in generated page")
 Path("index.html").write_text(final_html, encoding="utf-8")
 print("Generated Mamdouh page:", len(final_html.encode("utf-8")), "bytes")
