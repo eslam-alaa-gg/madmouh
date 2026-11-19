@@ -78,18 +78,7 @@ brand = soup.new_tag("a", href="#home", id="mamdouh-brand")
 brand["aria-label"] = "وصال"
 brand_img = soup.new_tag("img", src="img/wisal-logo.jpg", alt="وصال", width="104", height="48", loading="eager")
 brand.append(brand_img)
-theme_btn = soup.new_tag("button", id="theme-toggle", type="button")
-theme_btn["aria-label"] = "التبديل بين الوضع الليلي والنهاري"
-theme_btn["aria-pressed"] = "false"
-theme_btn["class"] = ["mamdouh-theme-toggle"]
-sun_svg = BeautifulSoup('<svg id="sun-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2M12 20v2M4.93 4.93l1.42 1.42M17.65 17.65l1.42 1.42M2 12h2M20 12h2M4.93 19.07l1.42-1.42M17.65 6.35l1.42-1.42"></path></svg>', "html.parser").svg
-moon_svg = BeautifulSoup('<svg id="moon-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.2 15.1A8.5 8.5 0 0 1 8.9 3.8 8.7 8.7 0 1 0 20.2 15.1Z"></path></svg>', "html.parser").svg
-moon_svg["hidden"] = True
-theme_btn.extend([sun_svg, moon_svg])
-theme_label = soup.new_tag("span", id="theme-label")
-theme_label.string = "ليلي"
-theme_btn.append(theme_label)
-toolbar.extend([brand, theme_btn])
+toolbar.append(brand)
 main.insert_before(toolbar)
 
 visitor = soup.new_tag("div", id="mamdouh-visitor-counter")
@@ -487,7 +476,7 @@ theme_style.string = theme_and_panels_css
 soup.head.append(theme_style)
 
 theme_script = soup.new_tag("script", id="mamdouh-theme-script")
-theme_script.string = r"""(()=>{const root=document.documentElement,btn=document.getElementById('theme-toggle'),sun=document.getElementById('sun-icon'),moon=document.getElementById('moon-icon'),label=document.getElementById('theme-label');if(!btn)return;let saved='light';try{saved=localStorage.getItem('mamdouh_theme')||'light'}catch(e){}const apply=t=>{root.setAttribute('data-theme',t);sun.hidden=t==='dark';moon.hidden=t!=='dark';label.textContent=t==='dark'?'نهاري':'ليلي';btn.setAttribute('aria-pressed',String(t==='dark'));const meta=document.querySelector('meta[name="theme-color"]');if(meta)meta.content=t==='dark'?'#191714':'#F8F6F3'};apply(saved);btn.addEventListener('click',()=>{const t=root.getAttribute('data-theme')==='dark'?'light':'dark';apply(t);try{localStorage.setItem('mamdouh_theme',t)}catch(e){}})})();"""
+theme_script.string = r"""(()=>{const root=document.documentElement;root.setAttribute("data-theme","light");try{localStorage.removeItem("mamdouh_theme")}catch(e){}const meta=document.querySelector('meta[name="theme-color"]');if(meta)meta.content="#F8F6F3"})();"""
 soup.body.append(theme_script)
 
 visitor_script = soup.new_tag("script", id="mamdouh-visitor-placeholder")
