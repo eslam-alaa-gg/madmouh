@@ -195,33 +195,34 @@ for link in list(soup.find_all("link")):
         link.decompose()
 
 replacements = [
-    ("محمد أحمد الجلاد وصلاح محمد الجلاد", "ممدوح"),
-    ("محمد أحمد الجلاد", "ممدوح"),
-    ("صلاح محمد الجلاد", "ممدوح"),
+    ("محمد أحمد الجلاد وصلاح محمد الجلاد", "ممدوح عبد الهادي الاسمر"),
+    ("محمد أحمد الجلاد", "ممدوح عبد الهادي الاسمر"),
+    ("صلاح محمد الجلاد", "ممدوح عبد الهادي الاسمر"),
     ("لا تنسوهما من دعائكم", "لا تنسوه من دعائكم"),
     ("لا تنسوهما", "لا تنسوه"),
     ("ادعُ لهما الآن", "ادعُ له الآن"),
+    ("اللهم ارحم محمد أحمد الجلاد وصلاح محمد الجلاد، واغفر لهما، واجعل قبريهما روضة من رياض الجنة", "اللهم ارحم ممدوح عبد الهادي الاسمر واغفر له واجعل قبره روضةً من رياض الجنة"),
+    ("اللهم اغفر لمحمد أحمد الجلاد وصلاح محمد الجلاد بحق هذا الاسم العظيم.", "اللهم اغفر لممدوح عبد الهادي الاسمر وارحمه بحق هذا الاسم العظيم."),
+    ("أدعية للمرحومين محمد أحمد الجلاد وصلاح محمد الجلاد", "أدعية للمرحوم ممدوح عبد الهادي الاسمر"),
+    ("صدقة جارية على روح المرحومين محمد أحمد الجلاد وصلاح محمد الجلاد، نسألكم الدعاء لهما بالرحمة والمغفرة:", "صدقة جارية على روح ممدوح عبد الهادي الاسمر، نسألكم الدعاء له بالرحمة والمغفرة:"),
+    ("انشر شيئًا للمتوفى", "شارك رابط الموقع"),
+    ("ممدوح", "ممدوح عبد الهادي الاسمر"),
     ("اللهم اغفر لهما وارحمهما، وعافهما واعفُ عنهما، وأكرم نُزلهما، ووسّع مُدخلهما.", "اللهم اغفر له وارحمه، وعافه واعفُ عنه، وأكرم نُزله، ووسّع مُدخله."),
     ("اللهم اغفر لهما وارحمهما", "اللهم اغفر له وارحمه"),
     ("عافهما واعفُ عنهما", "عافه واعفُ عنه"),
     ("أكرم نُزلهما", "أكرم نُزله"),
     ("وسّع مُدخلهما", "وسّع مُدخله"),
-    ("قبريهما", "قبره"),
-    ("المرحومين", "المرحوم"),
-    ("للمرحومين", "للمرحوم"),
-    ("المتوفّيين", "المتوفى"),
-    ("المتوفين", "المتوفى"),
-    ("للمتوفّيين", "للمتوفى"),
-    ("الفقيدين", "الفقيد"),
-    ("لهما", "له"),
-    ("ارحمهما", "ارحمه"),
-    ("عافهما", "عافه"),
-    ("اعفُ عنهما", "اعفُ عنه"),
-    ("نزلهما", "نزله"),
-    ("مدخلهما", "مدخله"),
-    ("عليهما", "عليه"),
-    ("al_jallad", "mamdouh_memorial"),
-    ("عَائِلَات الجَلَّاد", "ممدوح"),
+    ("اللهم اغفر لهما، وارفع درجتهما في المهديين، وافسح لهما في قبريهما، ونوّر لهما فيهما.", "اللهم اغفر له، وارفع درجته في المهديين، وافسح له في قبره، ونوّر له فيه."),
+    ("اللهم اغفر لهما وثبتهما عند السؤال، وارحمهما رحمة واسعة.", "اللهم اغفر له وثبته عند السؤال، وارحمه رحمة واسعة."),
+    ("اللهم اغفر لهما وارحمهما، واعف عنهما، وارفع درجاتهما.", "اللهم اغفر له وارحمه، واعف عنه، وارفع درجته."),
+    ("أدعية مأثورة — بصيغة المثنى", "أدعية للمرحوم ممدوح عبد الهادي الاسمر"),
+    ("الصياغة معدّلة للمثنى لتناسب الدعاء للمرحومين.", "صياغة دعاء مخصصة لممدوح، وليست نقلًا حرفيًا للحديث."),
+    ("صياغة معدّلة للمثنى، ولا تُنسب حرفيًا إلى الحديث.", "صياغة دعاء مخصصة لممدوح، ولا تُنسب حرفيًا للحديث."),
+    ("صياغة من الأسرة، وليس نصًا منقولًا عن النبي ﷺ.", "دعاء عام لممدوح، وليس نصًا منقولًا عن النبي ﷺ."),
+    ("المرحومين", "المرحوم"), ("للمرحومين", "للمرحوم"),
+    ("المتوفّيين", "المتوفى"), ("المتوفين", "المتوفى"), ("للمتوفّيين", "للمتوفى"),
+    ("الفقيدين", "الفقيد"), ("al_jallad", "mamdouh_memorial"),
+    ("عَائِلَات الجَلَّاد", "ممدوح عبد الهادي الاسمر"),
 ]
 
 theme_css = r"""
@@ -267,214 +268,6 @@ style = soup.new_tag("style", id="mamdouh-theme-overrides")
 style.string = theme_css
 soup.head.append(style)
 
-theme_and_panels_css = r"""
-:root,[data-theme=light]{--bg-main:#F8F6F3;--bg-gradient:linear-gradient(180deg,#F8F6F3 0%,#F1EEE9 100%);--text-main:#332F2A;--text-muted:#857E71;--text-heading:#332F2A;--card-bg:#FFFFFF;--card-inner:#F8F6F3;--border-color:#CFCAC2;--pill-bg:#E6E3DD;--pill-active-bg:#332F2A;--pill-active-text:#F8F6F3;--box-shadow-card:0 8px 24px rgba(51,47,42,.08);color-scheme:light}
-[data-theme=dark]{--bg-main:#191714;--bg-gradient:linear-gradient(180deg,#191714 0%,#24211D 100%);--text-main:#F1EEE9;--text-muted:#B2ABA0;--text-heading:#F8F6F3;--card-bg:#29251F;--card-inner:#332F2A;--border-color:#585248;--pill-bg:#403A32;--pill-active-bg:#E6E3DD;--pill-active-text:#332F2A;--box-shadow-card:0 8px 24px rgba(0,0,0,.24);color-scheme:dark}
-html{background:var(--bg-main)!important}
-body{background:var(--bg-gradient)!important;color:var(--text-main)!important;transition:background .2s,color .2s}
-.mamdouh-toolbar{direction:rtl;width:min(100% - 32px,760px);margin:12px auto 8px;display:flex;align-items:center;justify-content:space-between;min-height:54px}
-#mamdouh-brand{display:flex;align-items:center;justify-content:center;width:78px;height:42px;overflow:hidden;border-radius:10px;background:#F8F6F3;border:1px solid var(--border-color)}
-#mamdouh-brand img{width:100%;height:100%;object-fit:contain}
-.mamdouh-theme-toggle{display:inline-flex;align-items:center;justify-content:center;gap:7px;min-width:44px;min-height:42px;padding:7px 12px;border-radius:999px;border:1px solid var(--border-color);background:var(--card-bg);color:var(--text-main);font:500 .82rem Lemonadaa,system-ui,sans-serif;cursor:pointer}
-.mamdouh-theme-toggle svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
-.mamdouh-theme-toggle svg[hidden]{display:none}
-.mamdouh-visitor-counter{width:max-content;max-width:calc(100% - 32px);margin:2px auto 12px;padding:8px 18px;display:flex;align-items:center;justify-content:center;gap:10px;border:1px solid var(--border-color);border-radius:999px;background:var(--glass-bg);color:var(--text-muted);box-shadow:var(--box-shadow-card);font-size:.9rem}
-.mamdouh-visitor-counter strong{color:var(--text-heading);font-family:Inter,Arial,sans-serif;font-size:1.05rem;font-variant-numeric:tabular-nums}
-.mamdouh-intro{background:var(--glass-bg)!important;border-color:var(--border-color)!important}
-.mamdouh-name{color:var(--text-heading)!important}
-.mamdouh-subtitle{color:var(--text-muted)!important}
-.sec-card{background:var(--card-bg)!important;color:var(--text-main)!important;border-color:var(--border-color)!important;box-shadow:var(--box-shadow-card)!important}
-.sec-title{color:var(--text-heading)!important}
-.sec-card p,.sec-card .muted,.sec-card small{color:var(--text-muted)}
-.mamdouh-footer{color:var(--text-muted)!important;border-color:var(--border-color)!important}
-.mamdouh-footer p{color:var(--text-main)!important}
-.mamdouh-share a,.mamdouh-share button{background:var(--card-bg)!important;color:var(--text-main)!important;border-color:var(--border-color)!important}
-.dua-panel-toggle{display:flex;width:100%;min-height:48px;align-items:center;justify-content:center;margin:12px 0;padding:10px 16px;border:1px solid var(--border-color);border-radius:16px;background:var(--card-inner);color:var(--text-main);font:500 .92rem Lemonadaa,system-ui,sans-serif;cursor:pointer}
-.dua-nested-section{margin-top:12px}
-.dua-nested-section[hidden],#dua-categories-wrap[hidden]{display:none!important}
-#dua{display:flex;flex-direction:column;gap:10px}
-#dua .dua-nested-section{width:100%;box-sizing:border-box}
-#dua .dua-nested-section .sec-title{margin-top:4px}
-[data-theme=dark] .mamdouh-intro{background:rgba(41,37,31,.9)!important}
-[data-theme=dark] .quran-mark{background:#403A32;color:#F1EEE9}
-[data-theme=dark] .bn{background:rgba(25,23,20,.9)!important;border-color:#585248!important}
-[data-theme=dark] .bn a{color:#B2ABA0!important}
-[data-theme=dark] .bn a[aria-current=page]{background:#E6E3DD!important;color:#332F2A!important}
-[data-theme=dark] .v2-pray-btn{background:linear-gradient(135deg,#403A32 0%,#332F2A 100%)!important;color:#F1EEE9!important;border-color:#857E71!important}
-
-[data-theme=dark] .sec-card{
-  background:#211E19!important;color:#F3EBDD!important;border-color:#51483B!important;
-  box-shadow:0 10px 28px rgba(0,0,0,.3)!important
-}
-[data-theme=dark] .sec-card :is(h1,h2,h3,h4,h5,h6,.sec-title,.title,.heading,strong,b,label){
-  color:#F6EBD8!important
-}
-[data-theme=dark] .sec-card :is(p,span,small,li,div,a,button,em){color:#E9DDC9}
-[data-theme=dark] .sec-card :is(.muted,.subtitle,.description,.caption,.hint,.secondary){color:#C2B49D!important}
-[data-theme=dark] .sec-card :is([class*="quran"],[class*="surah"],[class*="audio"],[class*="player"],[class*="reciter"],[class*="dua"],[class*="verse"],[class*="ayah"],[class*="track"],[class*="control"]){
-  background-color:#302A22!important;color:#F3EBDD!important;border-color:#655744!important
-}
-[data-theme=dark] .sec-card :is(button,a,[role="button"]){
-  background-color:#3A3228!important;color:#F6EBD8!important;border-color:#75634B!important
-}
-[data-theme=dark] .sec-card :is(svg,i){color:#E8D7B8!important;stroke:currentColor}
-[data-theme=dark] .sec-card :is(input,select,textarea){background:#302A22!important;color:#F6EBD8!important;border-color:#75634B!important}
-[data-theme=dark] .sec-card :is(input,select,textarea)::placeholder{color:#BDAE96!important}
-[data-theme=dark] .sec-card :is(.progress,.progress-bar,.audio-progress,[class*="progress"]){background:#51483B!important}
-[data-theme=dark] .sec-card :is(.progress,[class*="progress"]) :is(i,span){background:#C7A979!important}
-
-
-/* Dark palette for the standalone dua and tasbeeh views */
-[data-theme=dark] body,
-[data-theme=dark] main{color:#F3EBDD!important}
-[data-theme=dark] .glass,
-[data-theme=dark] .glass.dua,
-[data-theme=dark] .glass.tas,
-[data-theme=dark] .glass.err{
-  background:linear-gradient(145deg,#29241D 0%,#211D18 100%)!important;
-  color:#F3EBDD!important;border:1px solid #514637!important;
-  box-shadow:0 18px 42px rgba(0,0,0,.34)!important
-}
-[data-theme=dark] .dua-text,
-[data-theme=dark] .dhikr,
-[data-theme=dark] .count,
-[data-theme=dark] .glass :is(h1,h2,h3,b,strong){color:#F6EBD8!important}
-[data-theme=dark] .glass .muted,
-[data-theme=dark] .glass .note,
-[data-theme=dark] .glass .dua-foot,
-[data-theme=dark] .glass p:not(.dua-text):not(.dhikr):not(.note){color:#CBBDA6!important}
-[data-theme=dark] .dua-foot{border-color:#514637!important}
-[data-theme=dark] .glass .icon,
-[data-theme=dark] .glass .btn:not(.dark),
-[data-theme=dark] .chip,
-[data-theme=dark] .custom input{
-  background:#383025!important;color:#F3EBDD!important;
-  border:1px solid #6A5943!important
-}
-[data-theme=dark] .btn.dark,
-[data-theme=dark] .chip[aria-pressed=true],
-[data-theme=dark] .nav a[aria-current=page]{
-  background:#C7AD82!important;border-color:#C7AD82!important;color:#211D18!important
-}
-[data-theme=dark] .tap{
-  background:radial-gradient(circle at 35% 28%,#786447,#3B3022 72%)!important;
-  color:#F6EBD8!important;box-shadow:inset 0 2px 0 rgba(255,255,255,.12),0 22px 42px rgba(0,0,0,.42)!important
-}
-[data-theme=dark] .bar{background:#494033!important}
-[data-theme=dark] .bar i{background:#C7AD82!important}
-[data-theme=dark] .nav{
-  background:rgba(34,29,23,.94)!important;border-color:#514637!important
-}
-[data-theme=dark] .nav a{color:#CBBDA6!important}
-[data-theme=dark] dialog{
-  background:#211D18!important;color:#F3EBDD!important;border:1px solid #514637!important
-}
-[data-theme=dark] .opt{
-  background:#302920!important;color:#F3EBDD!important;border-color:#514637!important
-}
-[data-theme=dark] .opt small{color:#CBBDA6!important}
-[data-theme=dark] .opt[aria-current=true]{background:#C7AD82!important;color:#211D18!important;border-color:#C7AD82!important}
-[data-theme=dark] .opt[aria-current=true] small{color:#33291D!important}
-[data-theme=dark] .grp{color:#CBBDA6!important}
-[data-theme=dark] .custom input::placeholder{color:#B8A98F!important}
-
-
-/* Explicit dark styling for the actual dua and tasbeeh view IDs */
-[data-theme="dark"] #duas,
-[data-theme="dark"] #tasbeeh{color:#F4EBDD!important}
-[data-theme="dark"] #duas > .glass,
-[data-theme="dark"] #tasbeeh > .glass,
-[data-theme="dark"] #duas .glass.dua,
-[data-theme="dark"] #tasbeeh .glass.tas,
-[data-theme="dark"] #duas .glass.err{
-  background:#201C17!important;
-  background-image:linear-gradient(145deg,#29231B 0%,#1D1A16 100%)!important;
-  color:#F4EBDD!important;
-  border:1px solid #66553E!important;
-  box-shadow:0 14px 36px rgba(0,0,0,.48)!important;
-  -webkit-backdrop-filter:none!important;backdrop-filter:none!important
-}
-[data-theme="dark"] #duas .dua-text,
-[data-theme="dark"] #tasbeeh .dhikr,
-[data-theme="dark"] #tasbeeh .count{color:#FFF2DA!important}
-[data-theme="dark"] #duas #d-src,
-[data-theme="dark"] #duas #d-idx,
-[data-theme="dark"] #tasbeeh #t-combo,
-[data-theme="dark"] #tasbeeh #t-of,
-[data-theme="dark"] #tasbeeh #t-note,
-[data-theme="dark"] #duas .muted,
-[data-theme="dark"] #tasbeeh .muted{color:#D1C0A5!important}
-[data-theme="dark"] #duas .dua-foot{border-top-color:#514432!important}
-[data-theme="dark"] #duas .icon,
-[data-theme="dark"] #duas .btn:not(.dark),
-[data-theme="dark"] #tasbeeh .btn:not(.dark),
-[data-theme="dark"] #tasbeeh .chip,
-[data-theme="dark"] #tasbeeh .custom input{
-  background:#332B21!important;color:#FFF0D6!important;
-  border:1px solid #786344!important
-}
-[data-theme="dark"] #duas .btn.dark,
-[data-theme="dark"] #tasbeeh .btn.dark,
-[data-theme="dark"] #tasbeeh .chip[aria-pressed="true"]{
-  background:#B99B6C!important;border-color:#B99B6C!important;color:#1D1913!important
-}
-[data-theme="dark"] #tasbeeh .tap{
-  background:radial-gradient(circle at 35% 28%,#806847 0%,#493722 72%)!important;
-  color:#FFF1D8!important;border:1px solid #A88A5E!important;
-  box-shadow:inset 0 2px 0 rgba(255,255,255,.12),0 22px 42px rgba(0,0,0,.55)!important
-}
-[data-theme="dark"] #tasbeeh .bar{background:#514637!important}
-[data-theme="dark"] #tasbeeh .bar i{background:#C7A979!important}
-[data-theme="dark"] #tasbeeh .chip{color:#F4EBDD!important}
-[data-theme="dark"] #tasbeeh .custom input::placeholder{color:#C7B698!important}
-[data-theme="dark"] #tasbeeh .center .btn,
-[data-theme="dark"] #duas .center .btn{background:#332B21!important;color:#FFF0D6!important;border-color:#786344!important}
-[data-theme="dark"] #tasbeeh .center .btn.dark,
-[data-theme="dark"] #duas .center .btn.dark{background:#B99B6C!important;color:#1D1913!important}
-
-
-/* Darken every individual dua tile, not only the outer section */
-html[data-theme="dark"] #dua,
-html[data-theme="dark"] #praised,
-html[data-theme="dark"] #hadith,
-html[data-theme="dark"] #dua-categories-wrap{
-  background:transparent!important;color:#F4EBDD!important
-}
-html[data-theme="dark"] #dua :is(.sec-card,.card,.dua-card,.dua-item,[class*="dua-card"],[class*="dua-item"],[class*="prayer-card"],[class*="category-card"]),
-html[data-theme="dark"] #praised :is(.sec-card,.card,.dua-card,.dua-item,[class*="dua-card"],[class*="dua-item"]),
-html[data-theme="dark"] #hadith :is(.sec-card,.card,.dua-card,.dua-item,[class*="dua-card"],[class*="dua-item"]){
-  background:#211E19!important;
-  background-color:#211E19!important;
-  background-image:linear-gradient(145deg,#29231B 0%,#1D1A16 100%)!important;
-  color:#F4EBDD!important;border-color:#66553E!important;
-  box-shadow:0 10px 28px rgba(0,0,0,.42)!important
-}
-html[data-theme="dark"] #dua :is(.sec-card,.card,.dua-card,.dua-item,[class*="dua-card"],[class*="dua-item"],[class*="prayer-card"],[class*="category-card"]) :is(p,span,small,li,strong,b,h1,h2,h3,h4),
-html[data-theme="dark"] #praised :is(.sec-card,.card,.dua-card,.dua-item,[class*="dua-card"],[class*="dua-item"]) :is(p,span,small,li,strong,b,h1,h2,h3,h4),
-html[data-theme="dark"] #hadith :is(.sec-card,.card,.dua-card,.dua-item,[class*="dua-card"],[class*="dua-item"]) :is(p,span,small,li,strong,b,h1,h2,h3,h4){
-  color:#F3EBDD!important
-}
-html[data-theme="dark"] #dua :is(.dua-panel-toggle,[class*="toggle"]),
-html[data-theme="dark"] #praised :is(.dua-panel-toggle,[class*="toggle"]),
-html[data-theme="dark"] #hadith :is(.dua-panel-toggle,[class*="toggle"]){
-  background:#302920!important;color:#F6EBD8!important;border-color:#66553E!important
-}
-
-@media(max-width:520px){.mamdouh-toolbar{margin-top:8px}.mamdouh-visitor-counter{margin-bottom:8px}}
-
-/* Match the requested dark palette on the individual dua cards only. */
-html[data-theme="dark"] #dua :is(.sec-card,.card,.dua-card,.dua-item,[class*="dua-card"],[class*="dua-item"],[class*="prayer-card"],[class*="category-card"]),
-html[data-theme="dark"] #praised :is(.sec-card,.card,.dua-card,.dua-item,[class*="dua-card"],[class*="dua-item"]),
-html[data-theme="dark"] #hadith :is(.sec-card,.card,.dua-card,.dua-item,[class*="dua-card"],[class*="dua-item"]){
-  background:#6a5f53!important;
-  background-color:#6a5f53!important;
-  background-image:none!important;
-}
-"""
-theme_style = soup.new_tag("style", id="mamdouh-theme-panels")
-theme_style.string = theme_and_panels_css
-soup.head.append(theme_style)
-
 theme_script = soup.new_tag("script", id="mamdouh-theme-script")
 theme_script.string = r"""(()=>{const root=document.documentElement;root.setAttribute("data-theme","light");try{localStorage.removeItem("mamdouh_theme")}catch(e){}const meta=document.querySelector('meta[name="theme-color"]');if(meta)meta.content="#F8F6F3"})();"""
 soup.body.append(theme_script)
@@ -490,34 +283,11 @@ soup.body.append(dua_script)
 final_html = str(soup)
 for old, new in replacements:
     final_html = final_html.replace(old, new)
-extra = [
-    ("اللهم ارحم محمد أحمد الجلاد وصلاح محمد الجلاد، واغفر لهما، واجعل قبريهما روضة من رياض الجنة", "اللهم ارحم ممدوح واغفر له واجعل قبره روضةً من رياض الجنة"),
-    ("اللهم اغفر لمحمد أحمد الجلاد وصلاح محمد الجلاد بحق هذا الاسم العظيم.", "اللهم اغفر لممدوح وارحمه بحق هذا الاسم العظيم."),
-    ("أدعية للمرحومين محمد أحمد الجلاد وصلاح محمد الجلاد", "أدعية للمرحوم ممدوح"),
-    ("صدقة جارية على روح المرحومين محمد أحمد الجلاد وصلاح محمد الجلاد، نسألكم الدعاء لهما بالرحمة والمغفرة:", "صدقة جارية على روح ممدوح، نسألكم الدعاء له بالرحمة والمغفرة:"),
-    ("انشر شيئًا للمتوفى", "شارك رابط الموقع"),
-    ("assets/audio/quran/surah/surah-ya-sin.mp3", "https://sadakah-58j1.vercel.app/surah-ya-sin.mp3"),
-]
-for old, new in extra:
-    final_html = final_html.replace(old, new)
 
-# Use the full memorial name consistently in every visible page location and metadata.
-final_html = final_html.replace("ممدوح", "ممدوح عبد الهادي الاسمر")
-for old, new in [
-    ("وارحمهما", "وارحمه"), ("ارحمهما", "ارحمه"), ("وعافهما", "وعافه"),
-    ("عنهما", "عنه"), ("نُزلهما", "نُزله"), ("مُدخلهما", "مُدخله"),
-    ("درجتهما", "درجته"), ("قبريهما", "قبره"), ("فيهما", "فيه"),
-    ("وثبتهما", "وثبته"), ("درجاتهما", "درجاته"), ("أبدلهما", "أبدله"),
-    ("دارهما", "داره"), ("أهلهما", "أهله"), ("وأدخلهما", "وأدخله"),
-    ("وأعذهما", "وأعذه"), ("وحشتهما", "وحشته"), ("وقرارهما", "وقراره"),
-    ("درجتيهما", "درجته"), ("واجمعهما", "واجمعه"), ("أسكنهما", "أسكنه"),
-    ("وارزقهما", "وارزقه"), ("ذكراهما", "ذكراه"), ("وثبّتهما", "وثبّته"),
-    ("سيئاتهما", "سيئاته"), ("اجعلهما", "اجعله"), ("ومتّعهما", "ومتّعه"),
-    ("تصلهما", "تصله"), ("لهما", "له"), ("عليهما", "عليه")
-]:
-    final_html = final_html.replace(old, new)
 
-for bad in ["محمد أحمد الجلاد", "صلاح محمد الجلاد", "لهما", "المرحومين", "قبريهما", "انشر تؤجر", "انشر شيئًا للمتوفى", "mp-dialog", "MP_CONFIG", "supabase", "al_jallad", "إنشاء صدقه"]:
+for bad in ["محمد أحمد الجلاد", "صلاح محمد الجلاد", "mp-dialog", "MP_CONFIG", "supabase", "al_jallad", "بصيغة المثنى", "صياغة معدّلة للمثنى"]:
+    if bad in final_html:
+        raise RuntimeError("Unremoved reference content: " + bad)
     if bad in final_html:
         raise RuntimeError("Unremoved reference content: " + bad)
 if not Path("img/photo.jpg").exists():
