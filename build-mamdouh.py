@@ -296,7 +296,7 @@ theme_script.string = r"""(()=>{const root=document.documentElement;root.setAttr
 soup.body.append(theme_script)
 
 visitor_script = soup.new_tag("script", id="mamdouh-visitor-placeholder")
-visitor_script.string = r"""(()=>{const el=document.getElementById('mamdouh-visitor-count');if(!el)return;const key='mamdouh_demo_visits_v1';let count=0;try{count=Math.max(0,Number(localStorage.getItem(key))||0)}catch(e){}const render=()=>{el.textContent=count.toLocaleString('ar-EG')};render();window.setInterval(()=>{count+=1;render();try{localStorage.setItem(key,String(count))}catch(e){}},180000)})();"""
+visitor_script.string = r"""(()=>{const el=document.getElementById('mamdouh-visitor-count');if(!el)return;const key='mamdouh_demo_visits_v1';let count=0;try{count=Math.max(0,Number(localStorage.getItem(key))||0)}catch(e){}const render=()=>{el.textContent=count.toLocaleString('ar-EG')};render();window.setInterval(()=>{count+=1;render();try{localStorage.setItem(key,String(count))}catch(e){}},20000)})();"""
 soup.body.append(visitor_script)
 
 dua_script = soup.new_tag("script", id="mamdouh-dua-panels")
