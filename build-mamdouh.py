@@ -472,6 +472,15 @@ html[data-theme="dark"] #hadith :is(.dua-panel-toggle,[class*="toggle"]){
 }
 
 @media(max-width:520px){.mamdouh-toolbar{margin-top:8px}.mamdouh-visitor-counter{margin-bottom:8px}}
+
+/* Match the requested dark palette on the individual dua cards only. */
+html[data-theme="dark"] #dua :is(.sec-card,.card,.dua-card,.dua-item,[class*="dua-card"],[class*="dua-item"],[class*="prayer-card"],[class*="category-card"]),
+html[data-theme="dark"] #praised :is(.sec-card,.card,.dua-card,.dua-item,[class*="dua-card"],[class*="dua-item"]),
+html[data-theme="dark"] #hadith :is(.sec-card,.card,.dua-card,.dua-item,[class*="dua-card"],[class*="dua-item"]){
+  background:#6a5f53!important;
+  background-color:#6a5f53!important;
+  background-image:none!important;
+}
 """
 theme_style = soup.new_tag("style", id="mamdouh-theme-panels")
 theme_style.string = theme_and_panels_css
