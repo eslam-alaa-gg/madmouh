@@ -62,3 +62,15 @@ dialog::backdrop{background:rgba(51,47,42,.35)}
 .toast.on{opacity:1;transform:none}
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
 @media (min-width:700px){dialog{margin:auto;border-radius:30px}}
+
+/* Keep the site in light mode even if an old theme control sets data-theme="dark". */
+html[data-theme="dark"]{
+  color-scheme:light!important;
+  --c1:#332F2A!important;
+  --c2:#585248!important;
+  --c3:#857E71!important;
+  --c4:#B2ABA0!important;
+  --c5:#6a5f53!important;
+  --c6:#E6E3DD!important;
+  --c7:#F8F6F3!important;
+}
