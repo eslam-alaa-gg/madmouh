@@ -86,7 +86,7 @@ visitor["class"] = ["mamdouh-visitor-counter"]
 visitor["role"] = "status"
 visitor["aria-live"] = "polite"
 visitor_label = soup.new_tag("span")
-visitor_label.string = "زيارات تقديرية"
+visitor_label.string = "الزِّيَارَات"
 visitor_num = soup.new_tag("strong", id="mamdouh-visitor-count")
 visitor_num.string = "—"
 visitor.extend([visitor_label, visitor_num])
