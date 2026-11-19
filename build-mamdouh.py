@@ -527,8 +527,8 @@ if not Path("img/photo.jpg").exists():
 if not Path("fonts/Lemonadaa_Regular.ttf").exists():
     raise RuntimeError("Missing Mamdouh font")
 # Replace the requested legacy color globally in the complete generated page.
-final_html = re.sub(r"#cecdcb|#cecdcc", "#6a5f53", final_html, flags=re.IGNORECASE)
-if re.search(r"#cecdcb|#cecdcc", final_html, flags=re.IGNORECASE):
+final_html = re.sub(r"#cfcac2|#cecdcb|#cecdcc", "#6a5f53", final_html, flags=re.IGNORECASE)
+if re.search(r"#cfcac2|#cecdcb|#cecdcc", final_html, flags=re.IGNORECASE):
     raise RuntimeError("Legacy color remains in generated page")
 Path("index.html").write_text(final_html, encoding="utf-8")
 print("Generated Mamdouh page:", len(final_html.encode("utf-8")), "bytes")
