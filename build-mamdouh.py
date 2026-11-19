@@ -272,6 +272,25 @@ style = soup.new_tag("style", id="mamdouh-theme-overrides")
 style.string = theme_css
 soup.head.append(style)
 
+# Light-only layout styles for the toolbar, visitor estimate, and expandable dua panels.
+theme_panels_css = r"""
+.mamdouh-toolbar{direction:rtl;width:min(100% - 32px,760px);margin:12px auto 8px;display:flex;align-items:center;justify-content:space-between;min-height:54px}
+#mamdouh-brand{display:flex;align-items:center;justify-content:center;width:78px;height:42px;overflow:hidden;border-radius:10px;background:#F8F6F3;border:1px solid var(--border-color)}
+#mamdouh-brand img{width:100%;height:100%;object-fit:contain}
+.mamdouh-visitor-counter{width:max-content;max-width:calc(100% - 32px);margin:2px auto 12px;padding:8px 18px;display:flex;align-items:center;justify-content:center;gap:10px;border:1px solid var(--border-color);border-radius:999px;background:var(--glass-bg);color:var(--text-muted);box-shadow:var(--box-shadow-card);font-size:.9rem}
+.mamdouh-visitor-counter strong{color:var(--text-heading);font-family:Inter,Arial,sans-serif;font-size:1.05rem;font-variant-numeric:tabular-nums}
+.dua-panel-toggle{display:flex;width:100%;min-height:48px;align-items:center;justify-content:center;margin:12px 0;padding:10px 16px;border:1px solid var(--border-color);border-radius:16px;background:var(--card-inner);color:var(--text-main);font:500 .92rem Lemonadaa,system-ui,sans-serif;cursor:pointer}
+.dua-nested-section{margin-top:12px}
+.dua-nested-section[hidden],#dua-categories-wrap[hidden]{display:none!important}
+#dua{display:flex;flex-direction:column;gap:10px}
+#dua .dua-nested-section{width:100%;box-sizing:border-box}
+#dua .dua-nested-section .sec-title{margin-top:4px}
+@media(max-width:520px){.mamdouh-toolbar{margin-top:8px}.mamdouh-visitor-counter{margin-bottom:8px}}
+"""
+panels_style = soup.new_tag("style", id="mamdouh-light-panels")
+panels_style.string = theme_panels_css
+soup.head.append(panels_style)
+
 theme_script = soup.new_tag("script", id="mamdouh-theme-script")
 theme_script.string = r"""(()=>{const root=document.documentElement;root.setAttribute("data-theme","light");try{localStorage.removeItem("mamdouh_theme")}catch(e){}const meta=document.querySelector('meta[name="theme-color"]');if(meta)meta.content="#F8F6F3"})();"""
 soup.body.append(theme_script)
