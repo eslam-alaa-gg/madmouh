@@ -279,6 +279,19 @@ replacements = [
     ("al_jallad", "mamdouh_memorial"),
     # Expand the short memorial name only after the exact phrase substitutions above.
     ("ممدوح", "ممدوح عبد الهادي الاسمر"),
+    # Final wording pass for labels produced by earlier legacy substitutions.
+    ("أدعية للمرحوم ممدوح", "دعاء للمرحوم ممدوح"),
+    ("أدعية للمتوفين", "دعاء للمرحوم ممدوح"),
+    ("الأدعية المأثورة", "الدعاء المأثور"),
+    ("أدعية مأثورة", "دعاء مأثور"),
+    ("الأدعية", "الدعاء"),
+    ("أدعية", "دعاء"),
+    ("الأذكار", "الذكر"),
+    ("أذكار", "ذكر"),
+    ("الزوار", "الزائر"),
+    ("زوار", "زائر"),
+    ("مشاركات", "مشاركة"),
+    ("ذكريات", "ذكرى"),
 ]
 
 theme_css = r"""
