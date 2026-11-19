@@ -2,7 +2,7 @@
 @font-face{font-family:Lemonadaa;src:url(../fonts/Lemonadaa_Regular.ttf) format('truetype');font-weight:400;font-display:swap}
 @font-face{font-family:Lemonadaa;src:url(../fonts/Lemonadaa_Medium.ttf) format('truetype');font-weight:500;font-display:swap}
 @font-face{font-family:Lemonadaa;src:url(../fonts/Lemonadaa_SemiBold.ttf) format('truetype');font-weight:600;font-display:swap}
-:root{--c1:#332F2A;--c2:#585248;--c3:#857E71;--c4:#B2ABA0;--c5:#CFCAC2;--c6:#E6E3DD;--c7:#F8F6F3;color-scheme:light}
+:root{--c1:#332F2A;--c2:#585248;--c3:#857E71;--c4:#B2ABA0;--c5:#6a5f53;--c6:#E6E3DD;--c7:#F8F6F3;color-scheme:light}
 *{box-sizing:border-box;margin:0;-webkit-tap-highlight-color:transparent}
 html{scroll-behavior:smooth}
 body{font-family:Lemonadaa,system-ui,sans-serif;font-weight:400;background:var(--c7);color:var(--c1);overflow-x:hidden;line-height:1.7}
